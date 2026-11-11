@@ -18,13 +18,14 @@ Requirements: PlatformIO Core with the Arduino-Pico core selected in
 Host checks also need a POSIX shell and C11/C++17 compilers (`cc` and `c++`)
 with AddressSanitizer and UndefinedBehaviorSanitizer support.
 
+The project has one build/upload environment: `pico`.
+
 Run these commands from this folder:
 
 ```sh
 pio run -e pico              # firmware: .pio/build/pico/firmware.uf2
 sh tests/run_host.sh         # host checks with ASan and UBSan
 sh tests/run_host.sh renders # also writes every hit, a groove per kit, and every Hortator preset as WAV
-pio run -e bench             # voice cost benchmark (send '?'); not a release image
 ```
 
 To flash a connected Talko and read it, with PlatformIO's Python (it has
@@ -260,6 +261,10 @@ Console lip-sync events.
 ## Hardware checks
 
 ### 0.3
+
+On 11 November 2026, 0.3 was flashed and sound was confirmed on the Talko.
+A serial status snapshot during playback reported a peak block time of
+982 us out of 2,902 us, with no late blocks, underruns or sheds.
 
 Gate-synchronized ERROR rolls are not yet checked on hardware. The host timing
 checks simulate 200 beats at each subdivision, off-beat ERROR entry, SPEED
