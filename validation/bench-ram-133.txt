@@ -1,0 +1,225 @@
+BENCH f_cpu=133000000 budget_us=2902
+FEL 0.KICK    worst_us= 432 mean_us= 232 blocks=177
+FEL 0.SNARE   worst_us= 314 mean_us= 270 blocks=225
+FEL 0.CLAP    worst_us= 187 mean_us= 159 blocks=220
+FEL 0.HATCL   worst_us= 217 mean_us= 200 blocks=54
+FEL 0.HATOP   worst_us= 215 mean_us= 200 blocks=331
+FEL 0.TOM     worst_us= 180 mean_us= 156 blocks=638
+FEL 0.RIM     worst_us= 182 mean_us= 164 blocks=9
+FEL 0.BELL    worst_us= 163 mean_us= 141 blocks=364
+FEL 1.KICK    worst_us= 250 mean_us= 230 blocks=268
+FEL 1.SNARE   worst_us= 312 mean_us= 269 blocks=101
+FEL 1.CLAP    worst_us= 184 mean_us= 159 blocks=309
+FEL 1.HATCL   worst_us= 213 mean_us= 200 blocks=54
+FEL 1.HATOP   worst_us= 211 mean_us= 200 blocks=335
+FEL 1.TOM     worst_us= 205 mean_us= 157 blocks=194
+FEL 1.RIM     worst_us= 204 mean_us= 174 blocks=6
+FEL 1.BELL    worst_us= 156 mean_us= 141 blocks=252
+FEL 2.KICK    worst_us= 315 mean_us= 231 blocks=575
+FEL 2.SNARE   worst_us= 285 mean_us= 269 blocks=335
+FEL 2.CLAP    worst_us= 179 mean_us= 159 blocks=2390
+FEL 2.HATCL   worst_us= 221 mean_us= 201 blocks=268
+FEL 2.HATOP   worst_us= 210 mean_us= 200 blocks=2011
+FEL 2.TOM     worst_us= 181 mean_us= 156 blocks=402
+FEL 2.RIM     worst_us= 199 mean_us= 168 blocks=11
+FEL 2.CYM     worst_us= 224 mean_us= 208 blocks=2411
+FEL 3.KICK    worst_us= 279 mean_us= 232 blocks=161
+FEL 3.SNARE   worst_us= 323 mean_us= 268 blocks=44
+FEL 3.CLAP    worst_us= 182 mean_us= 159 blocks=207
+FEL 3.HATCL   worst_us= 240 mean_us= 225 blocks=201
+FEL 3.HATOP   worst_us= 234 mean_us= 224 blocks=261
+FEL 3.CONGA   worst_us= 214 mean_us= 159 blocks=100
+FEL 3.RIM     worst_us= 206 mean_us= 156 blocks=7
+FEL 3.BELL    worst_us= 191 mean_us= 160 blocks=27
+FEL 4.KICK    worst_us= 317 mean_us= 232 blocks=128
+FEL 4.SNARE   worst_us= 300 mean_us= 270 blocks=74
+FEL 4.CLAP    worst_us= 181 mean_us= 159 blocks=173
+FEL 4.HATCL   worst_us= 236 mean_us= 225 blocks=84
+FEL 4.HATOP   worst_us= 234 mean_us= 225 blocks=468
+FEL 4.TOM     worst_us= 208 mean_us= 157 blocks=191
+FEL 4.RIM     worst_us= 205 mean_us= 175 blocks=5
+FEL 4.BELL    worst_us= 250 mean_us= 232 blocks=114
+FEL 5.KICK    worst_us= 279 mean_us= 230 blocks=419
+FEL 5.SNARE   worst_us= 286 mean_us= 270 blocks=201
+FEL 5.CLAP    worst_us= 181 mean_us= 159 blocks=281
+FEL 5.HATCL   worst_us= 212 mean_us= 201 blocks=268
+FEL 5.HATOP   worst_us= 217 mean_us= 200 blocks=1573
+FEL 5.TOM     worst_us= 190 mean_us= 156 blocks=402
+FEL 5.CLAVE   worst_us= 179 mean_us= 162 blocks=48
+FEL 5.CYM     worst_us= 246 mean_us= 232 blocks=1177
+FEL 6.KICK    worst_us= 272 mean_us= 230 blocks=419
+FEL 6.SNARE   worst_us= 303 mean_us= 269 blocks=101
+FEL 6.CLAP    worst_us= 186 mean_us= 159 blocks=281
+FEL 6.HATCL   worst_us= 222 mean_us= 200 blocks=54
+FEL 6.HATOP   worst_us= 216 mean_us= 200 blocks=335
+FEL 6.TOM     worst_us= 179 mean_us= 156 blocks=402
+FEL 6.RIM     worst_us= 202 mean_us= 173 blocks=6
+FEL 6.CYM     worst_us= 234 mean_us= 208 blocks=2411
+FEL 7.KICK    worst_us= 322 mean_us= 232 blocks=128
+FEL 7.SNARE   worst_us= 321 mean_us= 268 blocks=44
+FEL 7.CLAP    worst_us= 181 mean_us= 159 blocks=309
+FEL 7.HATCL   worst_us= 241 mean_us= 225 blocks=84
+FEL 7.HATOP   worst_us= 235 mean_us= 225 blocks=468
+FEL 7.TOM     worst_us= 211 mean_us= 157 blocks=191
+FEL 7.RIM     worst_us= 206 mean_us= 156 blocks=7
+FEL 7.BELL    worst_us= 160 mean_us= 141 blocks=252
+FEL 8.KICK    worst_us= 317 mean_us= 231 blocks=575
+FEL 8.SNARE   worst_us= 295 mean_us= 270 blocks=201
+FEL 8.CLAP    worst_us= 182 mean_us= 159 blocks=281
+FEL 8.HATCL   worst_us= 236 mean_us= 225 blocks=201
+FEL 8.HATOP   worst_us= 239 mean_us= 224 blocks=261
+FEL 8.CONGA   worst_us= 226 mean_us= 159 blocks=100
+FEL 8.CLAVE   worst_us= 190 mean_us= 162 blocks=48
+FEL 8.BELL    worst_us= 192 mean_us= 160 blocks=27
+FEL 9.KICK    worst_us= 260 mean_us= 231 blocks=302
+FEL 9.SNARE   worst_us= 297 mean_us= 270 blocks=225
+FEL 9.CLAP    worst_us= 185 mean_us= 159 blocks=220
+FEL 9.HATCL   worst_us= 226 mean_us= 200 blocks=54
+FEL 9.HATOP   worst_us= 218 mean_us= 200 blocks=331
+FEL 9.CONGA   worst_us= 213 mean_us= 196 blocks=319
+FEL 9.CLAVE   worst_us= 179 mean_us= 160 blocks=13
+FEL 9.CYM     worst_us= 229 mean_us= 208 blocks=2411
+BDTRX SUBTHUMP  worst_us= 826 mean_us= 440 blocks=217
+SDTRX HARDSNAP  worst_us= 919 mean_us= 650 blocks=173
+SDTRX POPSNARE  worst_us= 728 mean_us= 583 blocks=173
+TMTRX SWOOPTOM  worst_us= 316 mean_us= 300 blocks=169
+TMTRX FUZZTOM   worst_us= 310 mean_us= 299 blocks=76
+TMTRX SHORTTOM  worst_us= 320 mean_us= 298 blocks=72
+TMTRX BUZZLOW   worst_us= 277 mean_us= 256 blocks=85
+CGTRX GRITCONG  worst_us= 324 mean_us= 296 blocks=41
+CPTRX ROOMCLAP  worst_us=1293 mean_us= 939 blocks=156
+CPTRX WIDECLAP  worst_us= 780 mean_us= 770 blocks=108
+RSTRX KNOCK     worst_us= 180 mean_us= 136 blocks=45
+RSTRX GRITRIM   worst_us= 219 mean_us= 196 blocks=45
+CBTRX PUREBELL  worst_us=1921 mean_us=1741 blocks=41
+CBTRX LONGBELL  worst_us=2050 mean_us=1405 blocks=156
+CHTRX NOISEHAT  worst_us= 585 mean_us= 578 blocks=60
+CHTRX METALHAT  worst_us= 658 mean_us= 646 blocks=229
+CHTRX THINHAT   worst_us= 598 mean_us= 578 blocks=73
+CHTRX TINHAT    worst_us= 657 mean_us= 654 blocks=56
+OHTRX AIROPEN   worst_us= 585 mean_us= 560 blocks=312
+OHTRX DARKOPEN  worst_us= 657 mean_us= 642 blocks=781
+OHTRX SIZZLE    worst_us= 585 mean_us= 555 blocks=105
+OHTRX HALFOPEN  worst_us= 585 mean_us= 553 blocks=123
+CYTRX WASHCYM   worst_us=1002 mean_us= 803 blocks=633
+CYTRX PINGBELL  worst_us=1214 mean_us=1003 blocks=497
+CYTRX THINCRSH  worst_us=1220 mean_us=1015 blocks=497
+CYTRX LONGRIDE  worst_us=1224 mean_us= 976 blocks=1447
+B2TRX BIGBOOM   worst_us= 493 mean_us= 340 blocks=483
+B2TRX ZAPKICK   worst_us= 408 mean_us= 373 blocks=241
+B2TRX TICKKICK  worst_us= 459 mean_us= 403 blocks=118
+B2TRX SUBDIRT   worst_us= 413 mean_us= 361 blocks=241
+BDEFM FMSUB     worst_us= 797 mean_us= 504 blocks=266
+BDEFM NOISEZAP  worst_us= 518 mean_us= 491 blocks=101
+BDEFM FMBOOM    worst_us= 799 mean_us= 514 blocks=494
+BDEFM RISEKICK  worst_us= 794 mean_us= 775 blocks=130
+SDEFM TONESNR   worst_us= 795 mean_us= 660 blocks=148
+TMEFM LONGTOM   worst_us= 858 mean_us= 601 blocks=638
+TMEFM DROPTOM   worst_us= 859 mean_us= 832 blocks=40
+TMEFM RISETOM   worst_us= 854 mean_us= 836 blocks=344
+TMEFM GRITTOM   worst_us= 860 mean_us= 835 blocks=295
+CPEFM BUZZCLAP  worst_us= 761 mean_us= 730 blocks=78
+CPEFM FMZAP     worst_us= 744 mean_us= 732 blocks=14
+CPEFM DEEPBLIP  worst_us= 638 mean_us= 620 blocks=182
+CPEFM RATTLE    worst_us= 748 mean_us= 718 blocks=18
+RSEFM FMRIM     worst_us= 874 mean_us= 610 blocks=120
+RSEFM RIMSNARE  worst_us= 735 mean_us= 619 blocks=86
+CBEFM CLANK     worst_us= 708 mean_us= 473 blocks=185
+CBEFM GONG      worst_us= 551 mean_us= 522 blocks=902
+HHEFM FMHAT     worst_us= 482 mean_us= 462 blocks=117
+HHEFM TRASHHAT  worst_us= 530 mean_us= 521 blocks=278
+HHEFM TREMHAT   worst_us= 538 mean_us= 521 blocks=397
+HHEFM SPITHAT   worst_us= 485 mean_us= 460 blocks=23
+CYEFM FMCRASH   worst_us= 603 mean_us= 563 blocks=949
+CYEFM LOWCHIME  worst_us= 597 mean_us= 563 blocks=418
+CYEFM FMSPLASH  worst_us= 475 mean_us= 443 blocks=30
+CYEFM SIZZRIDE  worst_us= 604 mean_us= 563 blocks=513
+BOOM BOOMBD    worst_us=1827 mean_us=1720 blocks=312
+BOOM LONGBOOM  worst_us=1824 mean_us=1731 blocks=1423
+BOOM PUNCHER   worst_us=1821 mean_us=1695 blocks=229
+BOOM OVERDRV   worst_us=1749 mean_us=1701 blocks=713
+PUNCH SYNTHBD   worst_us=1992 mean_us=1955 blocks=161
+PUNCH CLEANBD   worst_us=1987 mean_us=1957 blocks=99
+PUNCH FMKICK    worst_us=1992 mean_us=1958 blocks=251
+PUNCH SUBKICK   worst_us=1993 mean_us=1964 blocks=754
+SNAP SHELLSN   worst_us=1913 mean_us=1894 blocks=202
+SNAP DRUMSHEL  worst_us=1927 mean_us=1901 blocks=246
+SNAP SNAPPY    worst_us=2944 mean_us=2931 blocks=199
+SNAP PICCOLO   worst_us=2941 mean_us=2924 blocks=109
+CRACK CRACKSN   worst_us=1907 mean_us=1876 blocks=310
+CRACK METALSN   worst_us=1908 mean_us=1884 blocks=564
+CRACK HISSNARE  worst_us=1801 mean_us=1764 blocks=248
+CRACK LOWCRACK  worst_us=1912 mean_us=1882 blocks=675
+METAL SHINYHAT  worst_us=1174 mean_us=1162 blocks=103
+METAL CHIPHAT   worst_us=1180 mean_us=1162 blocks=50
+METAL BRASSHAT  worst_us=1179 mean_us=1167 blocks=881
+METAL GRITHAT   worst_us=1176 mean_us=1160 blocks=147
+HISS STATIC    worst_us=1323 mean_us=1293 blocks=67
+HISS SPRAY     worst_us=1322 mean_us=1294 blocks=48
+HISS STEAM     worst_us=1313 mean_us=1306 blocks=225
+HISS RINGHAT   worst_us=1327 mean_us=1316 blocks=87
+SKIN HEADTOM   worst_us=3120 mean_us=2863 blocks=1957
+SKIN TIMPANI   worst_us=3120 mean_us=2887 blocks=2068
+SKIN TABLA     worst_us=3119 mean_us=2881 blocks=2033
+SKIN EDGEHIT   worst_us=3141 mean_us=2864 blocks=1977
+FM FMPERC    worst_us= 168 mean_us= 152 blocks=33
+FM FMBELL    worst_us= 172 mean_us= 150 blocks=389
+FM FMNOISE   worst_us= 171 mean_us= 150 blocks=20
+FM FMTOM     worst_us= 174 mean_us= 150 blocks=92
+K808 ROUNDBD   worst_us= 226 mean_us= 179 blocks=424
+K808 SUBBOOM   worst_us= 211 mean_us= 179 blocks=954
+K808 PUNCHBD   worst_us= 204 mean_us= 179 blocks=160
+K808 DIRTBD    worst_us= 205 mean_us= 179 blocks=517
+K909 HOUSEBD   worst_us= 203 mean_us= 174 blocks=150
+K909 HARDBD    worst_us= 200 mean_us= 174 blocks=262
+K909 TIGHTBD   worst_us= 203 mean_us= 174 blocks=68
+K909 DEEPBD    worst_us= 191 mean_us= 174 blocks=389
+S808 WARMSN    worst_us= 239 mean_us= 216 blocks=72
+S808 TONALSN   worst_us= 237 mean_us= 216 blocks=53
+S808 BRITESN   worst_us= 237 mean_us= 217 blocks=97
+S808 SHORTSN   worst_us= 239 mean_us= 213 blocks=32
+S909 CRISPSN   worst_us= 320 mean_us= 291 blocks=61
+S909 FATSN     worst_us= 312 mean_us= 291 blocks=87
+S909 NOISYSN   worst_us= 316 mean_us= 290 blocks=108
+S909 TIGHTSN   worst_us= 314 mean_us= 285 blocks=29
+C808 HANDCLAP  worst_us= 147 mean_us= 124 blocks=55
+C808 DARKCLAP  worst_us= 145 mean_us= 124 blocks=97
+C808 DRYCLAP   worst_us= 145 mean_us= 123 blocks=32
+C808 BIGCLAP   worst_us= 145 mean_us= 124 blocks=150
+C909 SNAPCLAP  worst_us= 146 mean_us= 123 blocks=43
+C909 LOOSECLP  worst_us= 149 mean_us= 124 blocks=64
+C909 TIGHTCLP  worst_us= 147 mean_us= 122 blocks=25
+C909 LOWCLAP   worst_us= 145 mean_us= 124 blocks=55
+HATC CLOSEDHH  worst_us= 187 mean_us= 170 blocks=26
+HATC TICK      worst_us= 190 mean_us= 174 blocks=13
+HATC DARKHAT   worst_us= 191 mean_us= 172 blocks=21
+HATC LOOSEHAT  worst_us= 186 mean_us= 171 blocks=43
+HATO OPENHAT   worst_us= 189 mean_us= 173 blocks=118
+HATO HALFHAT   worst_us= 188 mean_us= 173 blocks=58
+HATO WASHHAT   worst_us= 189 mean_us= 173 blocks=389
+HATO DUSTYHAT  worst_us= 189 mean_us= 172 blocks=191
+CYMB CRASH     worst_us= 216 mean_us= 201 blocks=262
+CYMB RIDE      worst_us= 219 mean_us= 201 blocks=360
+CYMB DARKCRSH  worst_us= 217 mean_us= 201 blocks=466
+CYMB SPLASH    worst_us= 216 mean_us= 201 blocks=177
+COWB COWBELL   worst_us= 133 mean_us= 127 blocks=72
+COWB CLINK     worst_us= 144 mean_us= 128 blocks=35
+COWB LOWBELL   worst_us= 143 mean_us= 128 blocks=118
+COWB RINGBELL  worst_us= 145 mean_us= 128 blocks=177
+TOM MIDTOM    worst_us= 265 mean_us= 229 blocks=92
+TOM FLOORTOM  worst_us= 251 mean_us= 231 blocks=150
+TOM HITOM     worst_us= 257 mean_us= 230 blocks=55
+TOM PEWTOM    worst_us= 263 mean_us= 230 blocks=165
+CONGA CONGA     worst_us= 176 mean_us= 153 blocks=37
+CONGA TUMBA     worst_us= 177 mean_us= 155 blocks=50
+CONGA SLAPCONG  worst_us= 190 mean_us= 151 blocks=25
+CONGA BONGO     worst_us= 189 mean_us= 156 blocks=22
+RIM RIMSHOT   worst_us= 233 mean_us= 177 blocks=9
+RIM STICK     worst_us= 216 mean_us= 195 blocks=6
+RIM HOTRIM    worst_us= 209 mean_us= 187 blocks=9
+RIM WOODRIM   worst_us= 212 mean_us= 187 blocks=8
+CLAVE CLAVE     worst_us= 176 mean_us= 156 blocks=23
+CLAVE WOODBLK   worst_us= 170 mean_us= 151 blocks=25
+CLAVE PIP       worst_us= 174 mean_us= 157 blocks=16
+CLAVE BLIP      worst_us= 169 mean_us= 155 blocks=22
+BENCH done

@@ -3,6 +3,7 @@
 // With an output folder, also writes each hit and a short groove per bank as WAV.
 #include "../src/drum_engine.h"
 #include "../src/effects.h"
+#include "../src/hortator_engine.h"
 #include "../src/panel_logic.h"
 
 #include <cmath>
@@ -14,6 +15,8 @@
 namespace {
 
 int failures = 0;
+// drums_budget on the device at 200 MHz (audio.cpp setup1).
+constexpr uint32_t DeviceBudget = 2968;
 
 void check(bool ok, const std::string &what) {
   if (!ok) {
@@ -55,6 +58,7 @@ struct Hit {
 
 Hit renderHit(uint32_t bank, uint32_t lane, int32_t tune, uint32_t decay, double maxSeconds) {
   drums_init();
+  drums_budget(DeviceBudget);
   drums_shape(tune, decay);
   drums_hit(bank, lane, 0);
   Hit hit;
@@ -75,13 +79,14 @@ Hit renderHit(uint32_t bank, uint32_t lane, int32_t tune, uint32_t decay, double
 }
 
 void checkHits(const char *folder) {
-  std::printf("%-6s %-6s %7s %7s %7s\n", "bank", "sound", "peak", "rms", "sec");
+  std::printf("%-6s %-9s %7s %7s %7s\n", "bank", "sound", "peak", "rms", "sec");
   for (uint32_t bank = 0; bank < DRUM_BANKS; ++bank) {
     for (uint32_t lane = 0; lane < DRUM_LANES; ++lane) {
       const std::string name = std::to_string(bank) + " " + drums_bank_name(bank) + " " +
                                std::to_string(lane + 1) + " " + drums_lane_name(bank, lane);
+      check(*drums_lane_name(bank, lane) != 0, name + " has a name");
       const Hit hit = renderHit(bank, lane, 0, DRUM_DESIGN, 20.0);
-      std::printf("%-6s %-6s %7d %7.0f %7.2f\n", drums_bank_name(bank),
+      std::printf("%-6s %-9s %7d %7.0f %7.2f\n", drums_bank_name(bank),
                   drums_lane_name(bank, lane), hit.peak, hit.rms, hit.seconds);
       check(hit.peak > 2000, name + " is audible");
       check(hit.peak <= 32767, name + " stays under full scale");
@@ -105,43 +110,82 @@ void checkHits(const char *folder) {
 }
 
 void checkVoices() {
-  // A lane is mono: restriking it keeps one voice.
-  drums_init();
   int32_t block[DRUM_BLOCK];
-  for (int i = 0; i < 5; ++i) {
-    drums_hit(0, 0, 0);
+  for (uint32_t bank : {0u, 6u}) {
+    const std::string kit = std::string(drums_bank_name(bank)) + ": ";
+    // A lane is mono: restriking it keeps one voice.
+    drums_init();
+    drums_budget(DeviceBudget);
+    for (int i = 0; i < 5; ++i) {
+      drums_hit(bank, 0, 0);
+      drums_render(block, DRUM_BLOCK);
+    }
+    check(drums_live() == 1, kit + "restruck kick keeps one voice");
+
+    // A closed hat chokes the open one within a few milliseconds.
+    drums_init();
+    drums_budget(DeviceBudget);
+    drums_hit(bank, 4, 0);
+    for (int i = 0; i < 10; ++i) drums_render(block, DRUM_BLOCK);
+    drums_hit(bank, 3, 0);
+    for (int i = 0; i < 100; ++i) drums_render(block, DRUM_BLOCK);
+    check(drums_live() <= 1, kit + "closed hat chokes the open hat");
+
+    // Gate release fades the last hit.
+    drums_init();
+    drums_budget(DeviceBudget);
+    drums_hit(bank, 7, 0);
     drums_render(block, DRUM_BLOCK);
+    drums_release(30000);
+    for (int i = 0; i < 2000 && drums_live(); ++i) drums_render(block, DRUM_BLOCK);
+    check(drums_live() == 0, kit + "gate release ends the last hit");
   }
-  check(drums_live() == 1, "restruck kick keeps one voice");
 
-  // A closed hat chokes the open one within a few milliseconds.
-  drums_init();
-  drums_hit(0, 4, 0);
-  drums_render(block, DRUM_BLOCK);
-  drums_hit(0, 3, 0);
-  for (int i = 0; i < 100; ++i) drums_render(block, DRUM_BLOCK);
-  check(drums_live() == 1, "closed hat chokes the open hat");
-
-  // Every hit of a bank rings together, and choke silences them.
-  drums_init();
-  for (uint32_t lane = 0; lane < DRUM_LANES; ++lane) drums_hit(1, lane, 127);
-  int32_t peak = 0;
-  for (int i = 0; i < 40; ++i) {
-    drums_render(block, DRUM_BLOCK);
-    for (int32_t s : block) peak = std::max(peak, std::abs(s));
+  // Every hit of a bank rings together without a budget, under full scale; choke silences them.
+  for (uint32_t bank = 0; bank < DRUM_BANKS; ++bank) {
+    const std::string kit = std::string(drums_bank_name(bank)) + ": ";
+    drums_init();
+    drums_budget(1000000);
+    for (uint32_t lane = 0; lane < DRUM_LANES; ++lane) drums_hit(bank, lane, 127);
+    check(drums_live() == DRUM_LANES, kit + "a full kit rings together");
+    int32_t peak = 0;
+    for (int i = 0; i < 40; ++i) {
+      drums_render(block, DRUM_BLOCK);
+      for (int32_t s : block) peak = std::max(peak, std::abs(s));
+    }
+    check(peak <= 32767, kit + "a full kit at once stays under full scale");
+    drums_choke_all(4000);
+    for (int i = 0; i < 60; ++i) drums_render(block, DRUM_BLOCK);
+    check(drums_live() == 0, kit + "choke silences every hit");
   }
-  check(peak <= 32767, "a full kit at once stays under full scale");
-  drums_choke_all(4000);
-  for (int i = 0; i < 60; ++i) drums_render(block, DRUM_BLOCK);
-  check(drums_live() == 0, "choke silences every hit");
 
-  // Gate release fades the last hit.
+  // The device budget: Felucca's and the classic kits play all eight, the heavy kits fewer.
+  for (uint32_t bank = 0; bank < DRUM_BANKS; ++bank) {
+    drums_init();
+    drums_budget(DeviceBudget);
+    for (uint32_t lane = 0; lane < DRUM_LANES; ++lane) drums_hit(bank, lane, 0);
+    const uint32_t live = drums_live();
+    std::printf("%s: %u of %d hits ring in the device budget\n", drums_bank_name(bank),
+                unsigned(live), DRUM_LANES);
+    const bool heavy = (bank >= 8 && bank <= 11) || bank == 15;
+    check(heavy ? live >= 3 && live < DRUM_LANES : live >= DRUM_LANES - 1,
+          std::string(drums_bank_name(bank)) + ": " + std::to_string(live) + " voices in the budget");
+  }
+
+  // A late block sheds the oldest hit at once.
   drums_init();
-  drums_hit(0, 7, 0);
+  drums_budget(DeviceBudget);
+  drums_hit(0, 0, 0);
+  drums_hit(0, 1, 0);
   drums_render(block, DRUM_BLOCK);
-  drums_release(30000);
-  for (int i = 0; i < 2000 && drums_live(); ++i) drums_render(block, DRUM_BLOCK);
-  check(drums_live() == 0, "gate release ends the bell");
+  drums_shed();
+  check(drums_live() == 1, "shed stops one hit");
+  drums_shed();
+  drums_shed();
+  check(drums_live() == 0, "shed with nothing left is harmless");
+  for (int i = 0; i < 10; ++i) drums_render(block, DRUM_BLOCK);
+  check(std::abs(block[DRUM_BLOCK - 1]) < 64, "a shed hit is declicked to silence");
+  check(hort_q_overflows() == 0, "Hortator's Q24 results fit 32 bits");
 }
 
 void checkPanel() {
@@ -165,6 +209,37 @@ void checkPanel() {
   check(rollPeriod(0) == DRUM_RATE / 4 && rollPeriod(4095) == (DRUM_RATE + 16) / 32,
         "roll from 4 to 32 hits a second");
   check(rollAccent(0) == 127 && rollAccent(1) == 0 && rollAccent(4) == 127, "roll accents");
+
+  // A sequencer step: SOUND CV falls from the snare (lane 1) to the kick (lane 0) as the gate
+  // rises. The gate debounce passes at 1.5 ms; main.cpp samples every GateSampleUs after it.
+  auto settle = [](auto sound, uint32_t &firedUs) {
+    GateSettle gate;
+    for (uint32_t us = 1500;; us += GateSampleUs) {
+      const uint16_t adc[PotCount] = {sound(us), 2048, 0, 2048};
+      if (gate.sample(us, adc)) {
+        firedUs = us;
+        return soundLane(adc[0], DRUM_LANES);
+      }
+    }
+  };
+  uint32_t firedUs = 0;
+  for (const double tauUs : {0.0, 300.0, 1000.0}) {
+    const uint8_t hit = settle(
+        [tauUs](uint32_t us) {
+          return uint16_t(250 + (750 - 250) * (tauUs > 0 ? std::exp(-double(us) / tauUs) : 0));
+        },
+        firedUs);
+    check(hit == 0 && firedUs <= GateSettleMaxUs,
+          "a sequencer step plays its own hit (CV time constant " +
+              std::to_string(int(tauUs)) + " us)");
+  }
+  settle([](uint32_t) { return uint16_t(250); }, firedUs);
+  check(firedUs == GateSettleMinUs, "a still SOUND plays after GateSettleMinUs");
+  settle([](uint32_t us) { return uint16_t(us / 4 % 4000); }, firedUs);
+  check(firedUs >= GateSettleMaxUs && firedUs < GateSettleMaxUs + GateSampleUs,
+        "a moving SOUND still plays by GateSettleMaxUs");
+  check(soundLane(470, DRUM_LANES) == 0 && soundLane(470, 1) == 1,
+        "a gate's hit ignores the knob hysteresis");
 }
 
 void checkEffects() {
@@ -203,6 +278,7 @@ void writeGrooves(const char *folder) {
   const uint32_t lanes[5] = {0, 1, 3, 4, 2};
   for (uint32_t bank = 0; bank < DRUM_BANKS; ++bank) {
     drums_init();
+    drums_budget(DeviceBudget);
     std::vector<int16_t> out;
     int32_t block[DRUM_BLOCK];
     for (int step = 0; step < Steps + 8; ++step) {

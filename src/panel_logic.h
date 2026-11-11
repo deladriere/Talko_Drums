@@ -57,6 +57,32 @@ inline uint32_t rollPeriod(uint16_t speed) {
   return uint32_t(lroundf(float(DRUM_RATE) / hz));
 }
 
+// A sequencer moves its CV and its gate at the same moment. A gate's hit waits
+// until the pots and CV inputs hold still, or GateSettleMaxUs at most, then reads
+// them directly so the hit plays this step's sound rather than the last step's.
+constexpr uint32_t GateSettleMinUs = 2000; // from the gate edge
+constexpr uint32_t GateSettleMaxUs = 5000;
+constexpr uint32_t GateSampleUs = 250;
+constexpr int GateStillAdc = 24;
+constexpr int PotCount = 4;
+
+struct GateSettle {
+  uint16_t last[PotCount] = {};
+  bool primed = false;
+
+  // Feed a reading of every pot each GateSampleUs; true once the hit may play.
+  bool sample(uint32_t sinceEdgeUs, const uint16_t (&adc)[PotCount]) {
+    bool still = primed;
+    for (int i = 0; i < PotCount; ++i) {
+      const int moved = int(adc[i]) - int(last[i]);
+      still = still && moved < GateStillAdc && moved > -GateStillAdc;
+      last[i] = adc[i];
+    }
+    primed = true;
+    return sinceEdgeUs >= GateSettleMaxUs || (still && sinceEdgeUs >= GateSettleMinUs);
+  }
+};
+
 // Every fourth hit of a roll is accented.
 inline uint8_t rollAccent(uint32_t hit) {
   return hit % 4 == 0 ? 127 : 0;

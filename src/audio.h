@@ -25,6 +25,8 @@ struct AudioStats {
   uint32_t peakUs;
   uint32_t lateBlocks;
   uint32_t underrunSamples;
+  uint32_t sheds;       // voices stopped because a block ran long
+  uint32_t voiceBudget; // drums_budget, in 133 MHz microseconds
 };
 
 struct AudioHit {
@@ -37,4 +39,5 @@ struct AudioHit {
 void setupAudio(const PanelControls &controls);
 void updateAudioControls(const PanelControls &controls);
 AudioStats audioStats();
+void audioResetPeak();
 AudioHit audioHit();

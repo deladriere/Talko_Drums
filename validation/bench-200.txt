@@ -1,0 +1,366 @@
+BENCH f_cpu=200000000 budget_us=2902
+FX Off@2048  worst_us=  69 mean_us=  62 blocks=1033
+FX Off@4095  worst_us=  66 mean_us=  62 blocks=1033
+FX Reverb@2048 worst_us= 334 mean_us= 331 blocks=1033
+FX Reverb@4095 worst_us= 334 mean_us= 331 blocks=1033
+FX Delay@2048 worst_us= 144 mean_us= 140 blocks=1033
+FX Delay@4095 worst_us= 144 mean_us= 140 blocks=1033
+FX Crush@2048 worst_us=  90 mean_us=  85 blocks=1033
+FX Crush@4095 worst_us=  87 mean_us=  83 blocks=1033
+FX Ring mod@2048 worst_us=  85 mean_us=  82 blocks=1033
+FX Ring mod@4095 worst_us=  85 mean_us=  82 blocks=1033
+FX Phaser@2048 worst_us= 171 mean_us= 167 blocks=1033
+FX Phaser@4095 worst_us= 171 mean_us= 167 blocks=1033
+FX Tape@2048 worst_us= 230 mean_us= 216 blocks=1033
+FX Tape@4095 worst_us= 225 mean_us= 219 blocks=1033
+KIT STD       worst_us=1114 mean_us= 356 blocks=638
+KIT 80        worst_us=1016 mean_us= 516 blocks=335
+KIT 10        worst_us=1090 mean_us= 418 blocks=2411
+KIT 66        worst_us=1066 mean_us= 491 blocks=261
+KIT 55        worst_us=1136 mean_us= 349 blocks=468
+KIT 77        worst_us=1057 mean_us= 364 blocks=1573
+KIT 808       worst_us=1318 mean_us= 315 blocks=424
+KIT 909       worst_us=1317 mean_us= 429 blocks=389
+KIT TRX       worst_us=3742 mean_us=1265 blocks=633
+KIT EFM       worst_us=3944 mean_us=1119 blocks=949
+KIT DIRT      worst_us=3467 mean_us=1389 blocks=781
+KIT ZAP       worst_us=3512 mean_us= 763 blocks=902
+KIT HAND      worst_us=1015 mean_us= 345 blocks=118
+KIT DEEP      worst_us=1253 mean_us= 330 blocks=954
+KIT TIGHT     worst_us=1247 mean_us= 384 blocks=177
+KIT FM        worst_us=2142 mean_us= 704 blocks=513
+FEL 0.KICK    worst_us= 253 mean_us= 159 blocks=177
+FEL 0.SNARE   worst_us= 224 mean_us= 185 blocks=225
+FEL 0.CLAP    worst_us= 125 mean_us= 111 blocks=220
+FEL 0.HATCL   worst_us= 145 mean_us= 139 blocks=54
+FEL 0.HATOP   worst_us= 145 mean_us= 139 blocks=331
+FEL 0.TOM     worst_us= 133 mean_us= 109 blocks=638
+FEL 0.RIM     worst_us= 128 mean_us= 117 blocks=9
+FEL 0.BELL    worst_us= 104 mean_us=  99 blocks=364
+FEL 1.KICK    worst_us= 190 mean_us= 159 blocks=268
+FEL 1.SNARE   worst_us= 214 mean_us= 184 blocks=101
+FEL 1.CLAP    worst_us= 122 mean_us= 111 blocks=309
+FEL 1.HATCL   worst_us= 144 mean_us= 139 blocks=54
+FEL 1.HATOP   worst_us= 144 mean_us= 139 blocks=335
+FEL 1.TOM     worst_us= 162 mean_us= 110 blocks=194
+FEL 1.RIM     worst_us= 155 mean_us= 125 blocks=6
+FEL 1.BELL    worst_us= 104 mean_us=  99 blocks=252
+FEL 2.KICK    worst_us= 245 mean_us= 159 blocks=575
+FEL 2.SNARE   worst_us= 202 mean_us= 184 blocks=335
+FEL 2.CLAP    worst_us= 122 mean_us= 111 blocks=2390
+FEL 2.HATCL   worst_us= 145 mean_us= 139 blocks=268
+FEL 2.HATOP   worst_us= 143 mean_us= 139 blocks=2011
+FEL 2.TOM     worst_us= 148 mean_us= 109 blocks=402
+FEL 2.RIM     worst_us= 151 mean_us= 119 blocks=11
+FEL 2.CYM     worst_us= 149 mean_us= 144 blocks=2411
+FEL 3.KICK    worst_us= 189 mean_us= 160 blocks=161
+FEL 3.SNARE   worst_us= 232 mean_us= 184 blocks=44
+FEL 3.CLAP    worst_us= 123 mean_us= 111 blocks=207
+FEL 3.HATCL   worst_us= 160 mean_us= 155 blocks=201
+FEL 3.HATOP   worst_us= 161 mean_us= 155 blocks=261
+FEL 3.CONGA   worst_us= 169 mean_us= 112 blocks=100
+FEL 3.RIM     worst_us= 159 mean_us= 112 blocks=7
+FEL 3.BELL    worst_us= 142 mean_us= 113 blocks=27
+FEL 4.KICK    worst_us= 233 mean_us= 160 blocks=128
+FEL 4.SNARE   worst_us= 217 mean_us= 185 blocks=74
+FEL 4.CLAP    worst_us= 124 mean_us= 111 blocks=173
+FEL 4.HATCL   worst_us= 161 mean_us= 155 blocks=84
+FEL 4.HATOP   worst_us= 161 mean_us= 155 blocks=468
+FEL 4.TOM     worst_us= 170 mean_us= 110 blocks=191
+FEL 4.RIM     worst_us= 156 mean_us= 126 blocks=5
+FEL 4.BELL    worst_us= 166 mean_us= 160 blocks=114
+FEL 5.KICK    worst_us= 196 mean_us= 159 blocks=419
+FEL 5.SNARE   worst_us= 210 mean_us= 185 blocks=201
+FEL 5.CLAP    worst_us= 122 mean_us= 111 blocks=281
+FEL 5.HATCL   worst_us= 145 mean_us= 139 blocks=268
+FEL 5.HATOP   worst_us= 145 mean_us= 139 blocks=1573
+FEL 5.TOM     worst_us= 152 mean_us= 110 blocks=402
+FEL 5.CLAVE   worst_us= 135 mean_us= 113 blocks=48
+FEL 5.CYM     worst_us= 165 mean_us= 160 blocks=1177
+TRIG BDTRX SUBTHUMP trigger_us=17
+BDTRX SUBTHUMP  worst_us= 499 mean_us= 294 blocks=217
+TRIG SDTRX HARDSNAP trigger_us=14
+SDTRX HARDSNAP  worst_us= 615 mean_us= 433 blocks=173
+TRIG SDTRX POPSNARE trigger_us=13
+SDTRX POPSNARE  worst_us= 488 mean_us= 390 blocks=173
+TRIG TMTRX SWOOPTOM trigger_us=13
+TMTRX SWOOPTOM  worst_us= 214 mean_us= 200 blocks=169
+TRIG TMTRX FUZZTOM trigger_us=32
+TMTRX FUZZTOM   worst_us= 213 mean_us= 200 blocks=76
+TRIG TMTRX SHORTTOM trigger_us=13
+TMTRX SHORTTOM  worst_us= 217 mean_us= 199 blocks=72
+TRIG TMTRX BUZZLOW trigger_us=25
+TMTRX BUZZLOW   worst_us= 194 mean_us= 171 blocks=85
+TRIG CGTRX GRITCONG trigger_us=24
+CGTRX GRITCONG  worst_us= 214 mean_us= 198 blocks=41
+TRIG CPTRX ROOMCLAP trigger_us=37
+CPTRX ROOMCLAP  worst_us= 854 mean_us= 623 blocks=156
+TRIG CPTRX WIDECLAP trigger_us=25
+CPTRX WIDECLAP  worst_us= 520 mean_us= 511 blocks=108
+TRIG RSTRX KNOCK trigger_us=9
+RSTRX KNOCK     worst_us= 120 mean_us=  90 blocks=45
+TRIG RSTRX GRITRIM trigger_us=64
+RSTRX GRITRIM   worst_us= 144 mean_us= 130 blocks=45
+TRIG CBTRX PUREBELL trigger_us=31
+CBTRX PUREBELL  worst_us=1277 mean_us=1156 blocks=41
+TRIG CBTRX LONGBELL trigger_us=35
+CBTRX LONGBELL  worst_us=1361 mean_us= 933 blocks=156
+TRIG CHTRX NOISEHAT trigger_us=31
+CHTRX NOISEHAT  worst_us= 389 mean_us= 384 blocks=60
+TRIG CHTRX METALHAT trigger_us=29
+CHTRX METALHAT  worst_us= 437 mean_us= 429 blocks=229
+TRIG CHTRX THINHAT trigger_us=31
+CHTRX THINHAT   worst_us= 394 mean_us= 384 blocks=73
+TRIG CHTRX TINHAT trigger_us=25
+CHTRX TINHAT    worst_us= 442 mean_us= 434 blocks=56
+TRIG OHTRX AIROPEN trigger_us=30
+OHTRX AIROPEN   worst_us= 389 mean_us= 371 blocks=312
+TRIG OHTRX DARKOPEN trigger_us=28
+OHTRX DARKOPEN  worst_us= 438 mean_us= 426 blocks=781
+TRIG OHTRX SIZZLE trigger_us=29
+OHTRX SIZZLE    worst_us= 389 mean_us= 368 blocks=105
+TRIG OHTRX HALFOPEN trigger_us=29
+OHTRX HALFOPEN  worst_us= 389 mean_us= 367 blocks=123
+TRIG CYTRX WASHCYM trigger_us=48
+CYTRX WASHCYM   worst_us= 663 mean_us= 533 blocks=633
+TRIG CYTRX PINGBELL trigger_us=46
+CYTRX PINGBELL  worst_us= 814 mean_us= 666 blocks=497
+TRIG CYTRX THINCRSH trigger_us=48
+CYTRX THINCRSH  worst_us= 813 mean_us= 674 blocks=497
+TRIG CYTRX LONGRIDE trigger_us=47
+CYTRX LONGRIDE  worst_us= 812 mean_us= 648 blocks=1447
+TRIG B2TRX BIGBOOM trigger_us=12
+B2TRX BIGBOOM   worst_us= 336 mean_us= 227 blocks=483
+TRIG B2TRX ZAPKICK trigger_us=10
+B2TRX ZAPKICK   worst_us= 276 mean_us= 249 blocks=241
+TRIG B2TRX TICKKICK trigger_us=18
+B2TRX TICKKICK  worst_us= 303 mean_us= 268 blocks=118
+TRIG B2TRX SUBDIRT trigger_us=13
+B2TRX SUBDIRT   worst_us= 271 mean_us= 240 blocks=241
+TRIG BDEFM FMSUB trigger_us=12
+BDEFM FMSUB     worst_us= 539 mean_us= 336 blocks=266
+TRIG BDEFM NOISEZAP trigger_us=11
+BDEFM NOISEZAP  worst_us= 342 mean_us= 328 blocks=101
+TRIG BDEFM FMBOOM trigger_us=12
+BDEFM FMBOOM    worst_us= 533 mean_us= 343 blocks=494
+TRIG BDEFM RISEKICK trigger_us=14
+BDEFM RISEKICK  worst_us= 544 mean_us= 517 blocks=130
+TRIG SDEFM TONESNR trigger_us=13
+SDEFM TONESNR   worst_us= 540 mean_us= 441 blocks=148
+TRIG TMEFM LONGTOM trigger_us=12
+TMEFM LONGTOM   worst_us= 572 mean_us= 401 blocks=638
+TRIG TMEFM DROPTOM trigger_us=11
+TMEFM DROPTOM   worst_us= 573 mean_us= 556 blocks=40
+TRIG TMEFM RISETOM trigger_us=11
+TMEFM RISETOM   worst_us= 576 mean_us= 558 blocks=344
+TRIG TMEFM GRITTOM trigger_us=12
+TMEFM GRITTOM   worst_us= 569 mean_us= 557 blocks=295
+TRIG CPEFM BUZZCLAP trigger_us=12
+CPEFM BUZZCLAP  worst_us= 511 mean_us= 488 blocks=78
+TRIG CPEFM FMZAP trigger_us=16
+CPEFM FMZAP     worst_us= 507 mean_us= 490 blocks=14
+TRIG CPEFM DEEPBLIP trigger_us=13
+CPEFM DEEPBLIP  worst_us= 432 mean_us= 415 blocks=182
+TRIG CPEFM RATTLE trigger_us=13
+CPEFM RATTLE    worst_us= 510 mean_us= 480 blocks=18
+TRIG RSEFM FMRIM trigger_us=18
+RSEFM FMRIM     worst_us= 585 mean_us= 408 blocks=120
+TRIG RSEFM RIMSNARE trigger_us=16
+RSEFM RIMSNARE  worst_us= 485 mean_us= 413 blocks=86
+TRIG CBEFM CLANK trigger_us=14
+CBEFM CLANK     worst_us= 470 mean_us= 316 blocks=185
+TRIG CBEFM GONG trigger_us=11
+CBEFM GONG      worst_us= 363 mean_us= 350 blocks=902
+TRIG HHEFM FMHAT trigger_us=12
+HHEFM FMHAT     worst_us= 324 mean_us= 309 blocks=117
+TRIG HHEFM TRASHHAT trigger_us=15
+HHEFM TRASHHAT  worst_us= 362 mean_us= 348 blocks=278
+TRIG HHEFM TREMHAT trigger_us=15
+HHEFM TREMHAT   worst_us= 366 mean_us= 348 blocks=397
+TRIG HHEFM SPITHAT trigger_us=12
+HHEFM SPITHAT   worst_us= 327 mean_us= 308 blocks=23
+TRIG CYEFM FMCRASH trigger_us=21
+CYEFM FMCRASH   worst_us= 396 mean_us= 377 blocks=949
+TRIG CYEFM LOWCHIME trigger_us=17
+CYEFM LOWCHIME  worst_us= 396 mean_us= 377 blocks=418
+TRIG CYEFM FMSPLASH trigger_us=12
+CYEFM FMSPLASH  worst_us= 335 mean_us= 297 blocks=30
+TRIG CYEFM SIZZRIDE trigger_us=16
+CYEFM SIZZRIDE  worst_us= 404 mean_us= 377 blocks=513
+TRIG BOOM BOOMBD trigger_us=45
+BOOM BOOMBD    worst_us=1212 mean_us=1142 blocks=312
+TRIG BOOM LONGBOOM trigger_us=28
+BOOM LONGBOOM  worst_us=1218 mean_us=1149 blocks=1423
+TRIG BOOM PUNCHER trigger_us=23
+BOOM PUNCHER   worst_us=1216 mean_us=1125 blocks=229
+TRIG BOOM OVERDRV trigger_us=21
+BOOM OVERDRV   worst_us=1161 mean_us=1129 blocks=713
+TRIG PUNCH SYNTHBD trigger_us=20
+PUNCH SYNTHBD   worst_us=1329 mean_us=1300 blocks=161
+TRIG PUNCH CLEANBD trigger_us=19
+PUNCH CLEANBD   worst_us=1330 mean_us=1301 blocks=99
+TRIG PUNCH FMKICK trigger_us=16
+PUNCH FMKICK    worst_us=1331 mean_us=1302 blocks=251
+TRIG PUNCH SUBKICK trigger_us=19
+PUNCH SUBKICK   worst_us=1332 mean_us=1305 blocks=754
+TRIG SNAP SHELLSN trigger_us=47
+SNAP SHELLSN   worst_us=1270 mean_us=1258 blocks=202
+TRIG SNAP DRUMSHEL trigger_us=46
+SNAP DRUMSHEL  worst_us=1280 mean_us=1262 blocks=246
+TRIG SNAP SNAPPY trigger_us=46
+SNAP SNAPPY    worst_us=1955 mean_us=1946 blocks=199
+TRIG SNAP PICCOLO trigger_us=46
+SNAP PICCOLO   worst_us=1954 mean_us=1942 blocks=109
+TRIG CRACK CRACKSN trigger_us=51
+CRACK CRACKSN   worst_us=1268 mean_us=1246 blocks=310
+TRIG CRACK METALSN trigger_us=50
+CRACK METALSN   worst_us=1268 mean_us=1251 blocks=564
+TRIG CRACK HISSNARE trigger_us=43
+CRACK HISSNARE  worst_us=1197 mean_us=1171 blocks=248
+TRIG CRACK LOWCRACK trigger_us=49
+CRACK LOWCRACK  worst_us=1270 mean_us=1250 blocks=675
+TRIG METAL SHINYHAT trigger_us=34
+METAL SHINYHAT  worst_us= 781 mean_us= 772 blocks=103
+TRIG METAL CHIPHAT trigger_us=30
+METAL CHIPHAT   worst_us= 780 mean_us= 772 blocks=50
+TRIG METAL BRASSHAT trigger_us=28
+METAL BRASSHAT  worst_us= 786 mean_us= 775 blocks=881
+TRIG METAL GRITHAT trigger_us=28
+METAL GRITHAT   worst_us= 786 mean_us= 770 blocks=147
+TRIG HISS STATIC trigger_us=31
+HISS STATIC    worst_us= 884 mean_us= 858 blocks=67
+TRIG HISS SPRAY trigger_us=29
+HISS SPRAY     worst_us= 882 mean_us= 859 blocks=48
+TRIG HISS STEAM trigger_us=30
+HISS STEAM     worst_us= 883 mean_us= 867 blocks=225
+TRIG HISS RINGHAT trigger_us=27
+HISS RINGHAT   worst_us= 887 mean_us= 874 blocks=87
+TRIG SKIN HEADTOM trigger_us=4
+SKIN HEADTOM   worst_us=2082 mean_us=1901 blocks=1957
+TRIG SKIN TIMPANI trigger_us=4
+SKIN TIMPANI   worst_us=2080 mean_us=1917 blocks=2068
+TRIG SKIN TABLA trigger_us=7
+SKIN TABLA     worst_us=2082 mean_us=1913 blocks=2033
+TRIG SKIN EDGEHIT trigger_us=4
+SKIN EDGEHIT   worst_us=2091 mean_us=1902 blocks=1977
+TRIG FM FMPERC trigger_us=12
+FM FMPERC    worst_us= 117 mean_us= 102 blocks=33
+TRIG FM FMBELL trigger_us=9
+FM FMBELL    worst_us= 118 mean_us= 101 blocks=389
+TRIG FM FMNOISE trigger_us=8
+FM FMNOISE   worst_us= 118 mean_us= 101 blocks=20
+TRIG FM FMTOM trigger_us=9
+FM FMTOM     worst_us= 113 mean_us= 100 blocks=92
+TRIG K808 ROUNDBD trigger_us=7
+K808 ROUNDBD   worst_us= 144 mean_us= 119 blocks=424
+TRIG K808 SUBBOOM trigger_us=7
+K808 SUBBOOM   worst_us= 132 mean_us= 119 blocks=954
+TRIG K808 PUNCHBD trigger_us=7
+K808 PUNCHBD   worst_us= 134 mean_us= 119 blocks=160
+TRIG K808 DIRTBD trigger_us=8
+K808 DIRTBD    worst_us= 141 mean_us= 119 blocks=517
+TRIG K909 HOUSEBD trigger_us=12
+K909 HOUSEBD   worst_us= 133 mean_us= 116 blocks=150
+TRIG K909 HARDBD trigger_us=9
+K909 HARDBD    worst_us= 133 mean_us= 116 blocks=262
+TRIG K909 TIGHTBD trigger_us=11
+K909 TIGHTBD   worst_us= 129 mean_us= 115 blocks=68
+TRIG K909 DEEPBD trigger_us=8
+K909 DEEPBD    worst_us= 130 mean_us= 116 blocks=389
+TRIG S808 WARMSN trigger_us=9
+S808 WARMSN    worst_us= 162 mean_us= 143 blocks=72
+TRIG S808 TONALSN trigger_us=12
+S808 TONALSN   worst_us= 156 mean_us= 144 blocks=53
+TRIG S808 BRITESN trigger_us=11
+S808 BRITESN   worst_us= 158 mean_us= 144 blocks=97
+TRIG S808 SHORTSN trigger_us=9
+S808 SHORTSN   worst_us= 158 mean_us= 142 blocks=32
+TRIG S909 CRISPSN trigger_us=9
+S909 CRISPSN   worst_us= 210 mean_us= 194 blocks=61
+TRIG S909 FATSN trigger_us=9
+S909 FATSN     worst_us= 209 mean_us= 193 blocks=87
+TRIG S909 NOISYSN trigger_us=10
+S909 NOISYSN   worst_us= 214 mean_us= 193 blocks=108
+TRIG S909 TIGHTSN trigger_us=10
+S909 TIGHTSN   worst_us= 212 mean_us= 190 blocks=29
+TRIG C808 HANDCLAP trigger_us=7
+C808 HANDCLAP  worst_us=  96 mean_us=  82 blocks=55
+TRIG C808 DARKCLAP trigger_us=8
+C808 DARKCLAP  worst_us=  96 mean_us=  82 blocks=97
+TRIG C808 DRYCLAP trigger_us=7
+C808 DRYCLAP   worst_us=  95 mean_us=  82 blocks=32
+TRIG C808 BIGCLAP trigger_us=8
+C808 BIGCLAP   worst_us=  89 mean_us=  82 blocks=150
+TRIG C909 SNAPCLAP trigger_us=10
+C909 SNAPCLAP  worst_us=  96 mean_us=  82 blocks=43
+TRIG C909 LOOSECLP trigger_us=8
+C909 LOOSECLP  worst_us=  91 mean_us=  82 blocks=64
+TRIG C909 TIGHTCLP trigger_us=8
+C909 TIGHTCLP  worst_us=  96 mean_us=  81 blocks=25
+TRIG C909 LOWCLAP trigger_us=8
+C909 LOWCLAP   worst_us=  91 mean_us=  82 blocks=55
+TRIG HATC CLOSEDHH trigger_us=9
+HATC CLOSEDHH  worst_us= 124 mean_us= 113 blocks=26
+TRIG HATC TICK trigger_us=17
+HATC TICK      worst_us= 122 mean_us= 115 blocks=13
+TRIG HATC DARKHAT trigger_us=7
+HATC DARKHAT   worst_us= 135 mean_us= 115 blocks=21
+TRIG HATC LOOSEHAT trigger_us=8
+HATC LOOSEHAT  worst_us= 124 mean_us= 114 blocks=43
+TRIG HATO OPENHAT trigger_us=12
+HATO OPENHAT   worst_us= 123 mean_us= 115 blocks=118
+TRIG HATO HALFHAT trigger_us=8
+HATO HALFHAT   worst_us= 123 mean_us= 115 blocks=58
+TRIG HATO WASHHAT trigger_us=8
+HATO WASHHAT   worst_us= 123 mean_us= 115 blocks=389
+TRIG HATO DUSTYHAT trigger_us=16
+HATO DUSTYHAT  worst_us= 123 mean_us= 114 blocks=191
+TRIG CYMB CRASH trigger_us=8
+CYMB CRASH     worst_us= 140 mean_us= 133 blocks=262
+TRIG CYMB RIDE trigger_us=10
+CYMB RIDE      worst_us= 143 mean_us= 133 blocks=360
+TRIG CYMB DARKCRSH trigger_us=7
+CYMB DARKCRSH  worst_us= 140 mean_us= 133 blocks=466
+TRIG CYMB SPLASH trigger_us=8
+CYMB SPLASH    worst_us= 143 mean_us= 133 blocks=177
+TRIG COWB COWBELL trigger_us=11
+COWB COWBELL   worst_us=  94 mean_us=  84 blocks=72
+TRIG COWB CLINK trigger_us=9
+COWB CLINK     worst_us=  94 mean_us=  85 blocks=35
+TRIG COWB LOWBELL trigger_us=8
+COWB LOWBELL   worst_us=  94 mean_us=  85 blocks=118
+TRIG COWB RINGBELL trigger_us=8
+COWB RINGBELL  worst_us=  93 mean_us=  85 blocks=177
+TRIG TOM MIDTOM trigger_us=8
+TOM MIDTOM    worst_us= 167 mean_us= 152 blocks=92
+TRIG TOM FLOORTOM trigger_us=7
+TOM FLOORTOM  worst_us= 170 mean_us= 153 blocks=150
+TRIG TOM HITOM trigger_us=8
+TOM HITOM     worst_us= 165 mean_us= 153 blocks=55
+TRIG TOM PEWTOM trigger_us=9
+TOM PEWTOM    worst_us= 169 mean_us= 153 blocks=165
+TRIG CONGA CONGA trigger_us=7
+CONGA CONGA     worst_us= 119 mean_us= 102 blocks=37
+TRIG CONGA TUMBA trigger_us=8
+CONGA TUMBA     worst_us= 123 mean_us= 103 blocks=50
+TRIG CONGA SLAPCONG trigger_us=8
+CONGA SLAPCONG  worst_us= 117 mean_us= 100 blocks=25
+TRIG CONGA BONGO trigger_us=7
+CONGA BONGO     worst_us= 123 mean_us= 104 blocks=22
+TRIG RIM RIMSHOT trigger_us=8
+RIM RIMSHOT   worst_us= 141 mean_us= 118 blocks=9
+TRIG RIM STICK trigger_us=8
+RIM STICK     worst_us= 141 mean_us= 129 blocks=6
+TRIG RIM HOTRIM trigger_us=11
+RIM HOTRIM    worst_us= 146 mean_us= 124 blocks=9
+TRIG RIM WOODRIM trigger_us=8
+RIM WOODRIM   worst_us= 139 mean_us= 124 blocks=8
+TRIG CLAVE CLAVE trigger_us=7
+CLAVE CLAVE     worst_us= 117 mean_us= 104 blocks=23
+TRIG CLAVE WOODBLK trigger_us=8
+CLAVE WOODBLK   worst_us= 118 mean_us= 101 blocks=25
+TRIG CLAVE PIP trigger_us=7
+CLAVE PIP       worst_us= 122 mean_us= 104 blocks=16
+TRIG CLAVE BLIP trigger_us=7
+CLAVE BLIP      worst_us= 139 mean_us= 105 blocks=22
+BENCH done

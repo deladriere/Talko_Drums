@@ -20,6 +20,9 @@ constexpr uint RingFrames = BlockFrames * 2;
 constexpr uint RingMask = RingFrames - 1;
 constexpr uint32_t GateReleaseUs = 30000;
 constexpr uint32_t ChokeUs = 4000;
+// validation/hardware-0.1-serial.txt: a block with Reverb and no voice took 740 us at 133 MHz.
+constexpr uint32_t FxReserveUs133 = 740;
+constexpr uint32_t ShedUs = BlockBudgetUs * 85 / 100;
 static_assert((RingFrames & RingMask) == 0);
 static_assert(SampleRate == DRUM_RATE && BlockFrames % DRUM_BLOCK == 0);
 
@@ -31,6 +34,8 @@ std::atomic<uint32_t> writeIndex{0};
 std::atomic<uint32_t> peakUs{0};
 std::atomic<uint32_t> lateBlocks{0};
 std::atomic<uint32_t> underrunSamples{0};
+std::atomic<uint32_t> sheds{0};
+uint32_t voiceBudget = 0;
 std::atomic<uint32_t> hitCount{0};
 std::atomic<uint32_t> hitState{0};
 uint16_t duties[RingFrames];
@@ -184,8 +189,11 @@ void updateAudioControls(const PanelControls &controls) {
 AudioStats audioStats() {
   return {BlockBudgetUs, peakUs.load(std::memory_order_relaxed),
           lateBlocks.load(std::memory_order_relaxed),
-          underrunSamples.load(std::memory_order_relaxed)};
+          underrunSamples.load(std::memory_order_relaxed),
+          sheds.load(std::memory_order_relaxed), voiceBudget};
 }
+
+void audioResetPeak() { peakUs.store(0, std::memory_order_relaxed); }
 
 AudioHit audioHit() {
   const uint32_t count = hitCount.load(std::memory_order_acquire);
@@ -200,6 +208,12 @@ void setup1() {
     tight_loop_contents();
   }
   drums_init();
+  // Voices get 90% of a block less the effects' share, both scaled to the clock.
+  const uint32_t mhz = clock_get_hz(clk_sys) / 1000000;
+  // Plan the voices to finish below the shed threshold, so shedding stays a last resort.
+  const uint32_t usable = ShedUs - FxReserveUs133 * 133 / mhz;
+  voiceBudget = usable * mhz / 133;
+  drums_budget(voiceBudget);
   setupEffects();
 }
 
@@ -230,5 +244,9 @@ void loop1() {
   if (elapsed > BlockBudgetUs) {
     lateBlocks.store(lateBlocks.load(std::memory_order_relaxed) + 1,
                      std::memory_order_relaxed);
+  }
+  if (elapsed > ShedUs && drums_live()) {
+    drums_shed();
+    sheds.store(sheds.load(std::memory_order_relaxed) + 1, std::memory_order_relaxed);
   }
 }
