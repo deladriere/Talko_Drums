@@ -11,6 +11,18 @@ At startup, the front display shows `0`, the dot, then `3`. The rear LED
 flashes blue once for the dot and green three times for the minor version; the zero
 major version has no red flashes.
 
+## User manual and downloads
+
+For installation, panel controls, kits and playing examples, see the
+[Talko Drums User Manual](https://www.polaxis.be/talko-drums-user-manual/).
+Ready-to-install UF2 files are on [GitHub Releases](https://github.com/deladriere/Talko_Drums/releases).
+This README covers development, implementation and verification.
+
+For a future version, publish a GitHub Release at the matching source commit
+and attach one `Talko_Drums-<version>.uf2` plus its checksum. The Polaxis browser
+installer discovers published releases automatically; draft releases and
+prereleases are excluded.
+
 ## Building
 
 Requirements: PlatformIO Core with the Arduino-Pico core selected in
