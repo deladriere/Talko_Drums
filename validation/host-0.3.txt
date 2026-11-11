@@ -1,0 +1,147 @@
+roll timing checks passed
+bank   sound        peak     rms     sec
+STD    KICK        15002    3862    0.51
+STD    SNARE       22900    2235    0.65
+STD    CLAP        24172    1130    0.64
+STD    HATCL       19144    1579    0.16
+STD    HATOP       17647     973    0.96
+STD    TOM         14999    2410    1.85
+STD    RIM         15001    5517    0.03
+STD    BELL        15830    1440    1.06
+80     KICK        15981    3146    0.78
+80     SNARE       25399    3332    0.29
+80     CLAP        25655     952    0.90
+80     HATCL       19182    1582    0.16
+80     HATOP       17605     969    0.97
+80     TOM         23679    4076    0.56
+80     RIM         17377    8326    0.02
+80     BELL        19990    1532    0.73
+10     KICK        11882    2273    1.67
+10     SNARE       16453    1851    0.97
+10     CLAP        12752     507    6.94
+10     HATCL       11918     711    0.78
+10     HATOP       12170     566    5.83
+10     TOM         17682    2889    1.16
+10     RIM         23215    6129    0.03
+10     CYM         24677     522   11.81
+66     KICK        19058    4038    0.47
+66     SNARE       28606    4902    0.13
+66     CLAP        20665    1167    0.60
+66     HATCL        9036     819    0.58
+66     HATOP       13490    1091    0.76
+66     CONGA       27517    5582    0.29
+66     RIM         27790    7937    0.02
+66     BELL        20319    4731    0.08
+55     KICK        20514    4531    0.37
+55     SNARE       26327    3874    0.21
+55     CLAP        22491    1277    0.50
+55     HATCL       12683    1266    0.24
+55     HATOP        9694     836    1.36
+55     TOM         24687    4109    0.55
+55     RIM         21790    9073    0.01
+55     BELL        27465    2269    0.33
+77     KICK        12883    2573    1.21
+77     SNARE       18246    2361    0.58
+77     CLAP        18794    1002    0.81
+77     HATCL        8383     711    0.78
+77     HATOP        8240     585    4.56
+77     TOM         18063    2889    1.16
+77     CLAVE       10364    2951    0.14
+77     CYM         14041     819    3.41
+808    ROUNDBD     17966    4233    1.23
+808    WARMSN      19205    1291    0.21
+808    HANDCLAP    18354    1941    0.16
+808    CLOSEDHH    11990     550    0.07
+808    OPENHAT     22481     797    0.34
+808    MIDTOM      19978    3136    0.26
+808    RIMSHOT     17992    3271    0.02
+808    COWBELL     15993    1623    0.21
+909    HOUSEBD     17738    3736    0.44
+909    CRISPSN     22218    1741    0.18
+909    SNAPCLAP    18212    1751    0.12
+909    LOOSEHAT     8448     453    0.12
+909    WASHHAT      9532     559    1.13
+909    HITOM       19689    3108    0.16
+909    HOTRIM      17948    3725    0.03
+909    CRASH       12835     856    0.76
+TRX    SUBTHUMP    17950    1742    0.63
+TRX    HARDSNAP    21772    1503    0.50
+TRX    ROOMCLAP    21936    2341    0.45
+TRX    NOISEHAT    11087    1288    0.17
+TRX    AIROPEN     11905    1602    0.91
+TRX    SWOOPTOM    19926    3569    0.49
+TRX    KNOCK       17993    1851    0.13
+TRX    WASHCYM     18305    1157    1.84
+EFM    FMSUB       17934    3524    0.77
+EFM    TONESNR     13484    2122    0.43
+EFM    BUZZCLAP    19936    2755    0.23
+EFM    FMHAT       14409     589    0.34
+EFM    TRASHHAT    11882    1461    0.81
+EFM    LONGTOM     19875    2268    1.85
+EFM    FMRIM       17978     843    0.35
+EFM    FMCRASH     15997    1182    2.75
+DIRT   BIGBOOM     17682    2747    1.40
+DIRT   POPSNARE    21786    1480    0.50
+DIRT   WIDECLAP    22055    2266    0.31
+DIRT   METALHAT    12216    1303    0.66
+DIRT   DARKOPEN    10021     744    2.27
+DIRT   FUZZTOM     19940    3143    0.22
+DIRT   GRITRIM     17979    1874    0.13
+DIRT   THINCRSH    13273     933    1.44
+ZAP    NOISEZAP    17984    2897    0.29
+ZAP    RIMSNARE    21781    2121    0.25
+ZAP    FMZAP       19938    2577    0.04
+ZAP    SPITHAT     11041    1358    0.07
+ZAP    TREMHAT     11163     369    1.15
+ZAP    DROPTOM     19943    3051    0.12
+ZAP    DEEPBLIP    17989    2879    0.53
+ZAP    GONG        15965    1927    2.62
+HAND   TUMBA       17985    3022    0.15
+HAND   CONGA       21788    3463    0.11
+HAND   SLAPCONG    19873    2675    0.07
+HAND   BONGO       11996    1713    0.06
+HAND   CLAVE       11938    1891    0.07
+HAND   WOODBLK     19925    3035    0.07
+HAND   LOWBELL     17983    2094    0.34
+HAND   CLINK       15965    1487    0.10
+DEEP   SUBBOOM     17960    4255    2.77
+DEEP   TONALSN     21042    1892    0.15
+DEEP   DARKCLAP    17696    1578    0.28
+DEEP   DARKHAT     13823    1599    0.06
+DEEP   DUSTYHAT     8150     548    0.55
+DEEP   FLOORTOM    19905    3133    0.44
+DEEP   WOODRIM     17936    3642    0.02
+DEEP   DARKCRSH    12892     687    1.35
+TIGHT  TIGHTBD     17627    3438    0.20
+TIGHT  TIGHTSN     20672    2059    0.08
+TIGHT  DRYCLAP     15296    2118    0.09
+TIGHT  TICK        12973    1039    0.04
+TIGHT  HALFHAT     14421     858    0.17
+TIGHT  PIP         19908    2870    0.05
+TIGHT  STICK       17984    3381    0.02
+TIGHT  SPLASH      21180     836    0.51
+FM     RISEKICK    17950    2947    0.38
+FM     FMNOISE     21723    3585    0.06
+FM     RATTLE      19937    4686    0.05
+FM     FMPERC      11955    2003    0.10
+FM     SIZZRIDE    11993     999    1.49
+FM     FMTOM       19904    3229    0.26
+FM     BLIP        17980    2792    0.06
+FM     FMBELL      15938    2775    1.13
+STD: 8 of 8 hits ring in the device budget
+80: 8 of 8 hits ring in the device budget
+10: 8 of 8 hits ring in the device budget
+66: 8 of 8 hits ring in the device budget
+55: 8 of 8 hits ring in the device budget
+77: 8 of 8 hits ring in the device budget
+808: 8 of 8 hits ring in the device budget
+909: 8 of 8 hits ring in the device budget
+TRX: 4 of 8 hits ring in the device budget
+EFM: 3 of 8 hits ring in the device budget
+DIRT: 4 of 8 hits ring in the device budget
+ZAP: 3 of 8 hits ring in the device budget
+HAND: 8 of 8 hits ring in the device budget
+DEEP: 8 of 8 hits ring in the device budget
+TIGHT: 8 of 8 hits ring in the device budget
+FM: 7 of 8 hits ring in the device budget
+all checks passed

@@ -2,6 +2,7 @@
 #include "audio.h"
 #include "drum_engine.h"
 #include "panel_logic.h"
+#include "roll_timing.h"
 #include "talko_startup.h"
 
 #include <Arduino.h>
@@ -22,7 +23,7 @@ constexpr uint SelectPin = 13;
 constexpr uint ModeB = 14;
 constexpr uint ModeA = 15;
 constexpr uint8_t VersionMajor = 0;
-constexpr uint8_t VersionMinor = 2;
+constexpr uint8_t VersionMinor = 3;
 // Banks 0..F: the decimal digits, then A b C d E F.
 constexpr uint8_t BankGlyphs[DRUM_BANKS] = {
     0x3f, 0x06, 0x5b, 0x4f, 0x66, 0x6d, 0x7d, 0x07, 0x7f, 0x6f, 0x77, 0x7c, 0x39, 0x5e, 0x79, 0x71,
@@ -171,6 +172,7 @@ uint32_t gateEdgeAt = 0;
 uint32_t gateSampledAt = 0;
 uint32_t gateSettledUs = 0;
 PanelLogic::GateSettle gateSettle;
+RollTiming::GateClock rollGateClock;
 
 void readPots();
 
@@ -380,6 +382,7 @@ void applySelfTest(uint32_t now) {
   if (!testing) {
     return;
   }
+  controls.rollGateUs = 0; // The self-test always exercises the standalone 32 Hz roll.
   const uint32_t t = now - testKitStart;
   const int phase = t < TestStrikesEnd ? 0 : t < TestDryRollEnd ? 1 : 2;
   if (phase > testPhase) {
@@ -503,6 +506,7 @@ void serviceConsole() {
              unsigned(controls.speed), unsigned(gateHeld), unsigned(controls.error));
       append("MODE %s\n", ModeNames[unsigned(controls.mode)]);
       append("GATE settle_us=%lu\n", (unsigned long)gateSettledUs);
+      append("ROLL gate_us=%lu\n", (unsigned long)controls.rollGateUs);
       append("ENCODER detents=%lu invalid=%lu\n",
              (unsigned long)encoderDetents, (unsigned long)encoderInvalid);
       const AudioStats stats = audioStats();
@@ -578,6 +582,7 @@ void loop() {
   const bool modeChanged = !testing && updateMode(now);
   const bool rising = gateChanged && gateHeld;
   if (rising) {
+    rollGateClock.pulse(gateChangedAt);
     gatePending = true;
     gateEdgeAt = gateChangedAt;
     gateSampledAt = micros() - PanelLogic::GateSampleUs;
@@ -598,6 +603,7 @@ void loop() {
   const bool gateFired = settleGate();
   // A gate shorter than the settling still plays, then releases.
   controls.gate = gateHeld || gatePending;
+  controls.rollGateUs = rollGateClock.periodUs(micros());
   applySelfTest(now);
 
   static uint32_t lastDetents = 0;

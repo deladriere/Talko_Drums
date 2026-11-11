@@ -1,4 +1,4 @@
-# Talko 2 Drums 0.2
+# Talko 2 Drums 0.3
 
 A drum machine voice for the Talko 2 RP2040. The encoder selects one of sixteen
 drum kits, `0` to `F`. SOUND selects one of the kit's eight hits, and SPEAK or
@@ -7,8 +7,8 @@ kits `6` to `F` are built from the drum models and factory presets of Hortator
 by DEADACTIVE. Both are used unchanged at their designed 44.1 kHz rate (see
 [THIRD_PARTY.md](THIRD_PARTY.md)).
 
-At startup, the front display shows `0`, the dot, then `2`. The rear LED
-flashes blue once for the dot and green twice for the minor version; the zero
+At startup, the front display shows `0`, the dot, then `3`. The rear LED
+flashes blue once for the dot and green three times for the minor version; the zero
 major version has no red flashes.
 
 ## Building
@@ -31,7 +31,7 @@ To flash a connected Talko and read it, with PlatformIO's Python (it has
 pyserial). Close any Console page holding the port first:
 
 ```sh
-~/.platformio/penv/bin/python tools/flash_local.py --serial <USB serial number> --image Talko_Drums-0.2.uf2 --product "Talko 2 Drums 0.2"
+~/.platformio/penv/bin/python tools/flash_local.py --serial <USB serial number> --image Talko_Drums-0.3.uf2 --product "Talko 2 Drums 0.3"
 ~/.platformio/penv/bin/python tools/status.py --seconds 30
 ~/.platformio/penv/bin/python tools/status.py --seconds 150 --every 0 --send '!' --until "TEST done"
 ```
@@ -66,6 +66,7 @@ so no kit uses them. Reverb is the heaviest effect, 334 µs per block.
 - `src/audio.cpp`: core 1 rendering, PWM output, timing counters and voice budget.
 - `src/drum_engine.c` and `src/hortator_engine.c`: voice management and engine adapters.
 - `src/effects.cpp`: effects; `src/panel_logic.h`: control mappings and gate settling.
+- `src/roll_timing.h`: gate-clock tracking and the ERROR roll's subdivision grid.
 - `third_party/`: bundled upstream engines, licences and source hashes.
 - `tests/`, `tools/` and `validation/`: host checks, development helpers and hardware logs.
 
@@ -182,12 +183,21 @@ so turning back up brings in fresh audio rather than an old tail.
 
 ## ERROR roll
 
-Hold ERROR: the selected hit plays as a roll, starting at once. Every fourth
-hit is accented. Release ERROR to stop; the last hits ring out.
+Hold ERROR for a roll on the selected hit. Without a gate clock it starts at
+once, with every fourth hit accented. Release ERROR to stop; the last hits
+ring out.
+
+With regular incoming gates, the roll follows their rhythm after two pulses.
+SPEED selects 1, 2, 4, 8 or 16 hits per gate interval, capped at 32 hits a second
+(fast incoming gates themselves are still played). Each gate restarts the
+subdivisions and accents. Pressing ERROR between beats joins the next
+subdivision; moving SPEED keeps the roll on the gate's grid. The roll waits
+for each new gate instead of doubling it with a predicted hit. After two
+gate intervals without another pulse, it returns to the standalone roll.
 
 | Control while ERROR is held | Effect on the roll |
 |---|---|
-| SPEED | Roll rate, from 4 hits a second at the left to 32 at the right. |
+| SPEED | Clocked: 1, 2, 4, 8 or 16 hits per gate, subject to the rate limit. Standalone: 4 to 32 hits a second. |
 | SOUND | Which hit rolls; turn it to move the roll across the kit. |
 | PITCH | Tunes the rolling hit live. |
 | FX | Effect level, as usual. |
@@ -206,7 +216,7 @@ current kit or FX page. A ringing hit or held ERROR keeps the display awake.
 
 ## USB serial
 
-Serial-port selectors that support device names show **Talko 2 Drums 0.2**,
+Serial-port selectors that support device names show **Talko 2 Drums 0.3**,
 so you can identify the installed firmware and version before connecting.
 
 At 115200 baud, the firmware prints the name of every hit as it plays, one per
@@ -217,19 +227,22 @@ hits come faster than the USB link can print, only the latest is printed. Send
 `?` for a status report:
 
 ```text
-Talko 2 Drums 0.2
+Talko 2 Drums 0.3
 BANK 8 TRX
 SOUND 3 ROOMCLAP
 EFFECT Reverb page=BANK
 PANEL sound=1180 pitch=2050 fx=0 speed=2047 gate=0 error=0
 MODE gate
 GATE settle_us=2000
+ROLL gate_us=0
 ENCODER detents=4 invalid=0
 AUDIO budget_us=2902 peak_us=... late_blocks=0 underrun_samples=0 sheds=0
 CPU mhz=200 voices=2 voice_budget_us133=2968
 ```
 
 `GATE settle_us` is how long the last gate's hit waited for its CV to settle.
+`ROLL gate_us` is the measured interval between incoming gates, before CV
+settling; zero means the roll uses its standalone rate.
 
 Send `!` for the self-test, about two minutes, which needs no hands. It takes
 over the panel and plays every kit in turn: each hit twice, then a 32-hit-a-second
@@ -245,6 +258,17 @@ Drum hits have no articulation to animate, so this firmware does not stream
 Console lip-sync events.
 
 ## Hardware checks
+
+### 0.3
+
+Gate-synchronized ERROR rolls are not yet checked on hardware. The host timing
+checks simulate 200 beats at each subdivision, off-beat ERROR entry, SPEED
+movement, tempo changes, clock loss and timer wrap. Keep `Talko_Drums-0.2.uf2`
+for rollback.
+
+On hardware, check a sequencer with ERROR held, different SPEED settings,
+tempo changes, and pressing ERROR between beats. Listen for drift or doubled
+hits at gate boundaries, including with the heavy kits and Reverb active.
 
 ### 0.2
 

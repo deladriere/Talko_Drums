@@ -16,6 +16,7 @@ struct PanelControls {
   uint8_t bank;
   uint8_t lane;
   uint8_t trigger; // counts SPEAK and GATE hits
+  uint32_t rollGateUs = 0; // measured gate-clock interval; zero for a standalone roll
   bool gate;
   bool error;
 };

@@ -2,6 +2,7 @@
 #include "audio.h"
 #include "drum_engine.h"
 #include "panel_logic.h"
+#include "roll_timing.h"
 
 #include <Arduino.h>
 #include <atomic>
@@ -98,10 +99,8 @@ void hit(const PanelControls &panel, uint8_t accent) {
 }
 
 struct Roll {
-  bool held = false;
   uint8_t decay = DRUM_DESIGN;
-  uint32_t hits = 0;
-  int32_t countdown = 0;
+  RollTiming::Roll timing;
 };
 Roll roll;
 
@@ -110,16 +109,12 @@ void applyControls(const PanelControls &next) {
   static bool firstBlock = true;
 
   uint8_t decay = PanelLogic::speedDecay(next.speed);
-  if (next.error && !roll.held) {
-    // The roll starts at once, at the decay SPEED had before it became the rate.
-    roll.held = true;
+  if (next.error && !roll.timing.held()) {
+    // Keep the decay SPEED had before it became the roll rate.
     roll.decay = decay;
-    roll.hits = 0;
-    roll.countdown = 0;
-  } else if (!next.error) {
-    roll.held = false;
   }
-  if (roll.held) {
+  roll.timing.update(next.error, next.speed, next.rollGateUs);
+  if (roll.timing.held()) {
     decay = roll.decay;
   }
   drums_shape(PanelLogic::pitchTune(next.pitch), decay);
@@ -128,9 +123,10 @@ void applyControls(const PanelControls &next) {
     setEffect(next.effect, fxAmount(next.fx));
   }
   if (!firstBlock && next.trigger != previous.trigger) {
-    hit(next, 0);
+    hit(next, roll.timing.gate());
   }
-  if (!firstBlock && previous.gate && !next.gate && next.mode == PlayMode::Gate && !roll.held) {
+  if (!firstBlock && previous.gate && !next.gate && next.mode == PlayMode::Gate &&
+      !roll.timing.held()) {
     drums_release(GateReleaseUs);
   }
   previous = next;
@@ -138,17 +134,10 @@ void applyControls(const PanelControls &next) {
 }
 
 void renderBlock(const PanelControls &panel, int32_t *mix) {
-  const int32_t period = int32_t(PanelLogic::rollPeriod(panel.speed));
   for (uint offset = 0; offset < BlockFrames; offset += DRUM_BLOCK) {
-    if (roll.held) {
-      if (roll.countdown <= 0) {
-        hit(panel, PanelLogic::rollAccent(roll.hits++));
-        roll.countdown += period;
-        if (roll.countdown <= 0) {
-          roll.countdown = period;
-        }
-      }
-      roll.countdown -= DRUM_BLOCK;
+    uint8_t accent = 0;
+    if (roll.timing.tick(accent)) {
+      hit(panel, accent);
     }
     drums_render(mix + offset, DRUM_BLOCK);
   }

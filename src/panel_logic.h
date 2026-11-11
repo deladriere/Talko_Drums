@@ -51,7 +51,7 @@ inline uint8_t speedDecay(uint16_t adc) {
   return uint8_t(lroundf(DRUM_DESIGN + x * (x < 0.0f ? DRUM_DESIGN : 127 - DRUM_DESIGN)));
 }
 
-// While ERROR is held, SPEED sets the roll from 4 hits a second to 32.
+// Without a gate clock, held ERROR uses a standalone roll from 4 to 32 hits/second.
 inline uint32_t rollPeriod(uint16_t speed) {
   const float hz = RollSlowestHz * exp2f(RollOctaves * float(speed) / float(AdcMax));
   return uint32_t(lroundf(float(DRUM_RATE) / hz));

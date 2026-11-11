@@ -5,6 +5,9 @@ cd "$(dirname "$0")/.."
 test_build=$(mktemp -d "${TMPDIR:-/tmp}/talko-drums-host.XXXXXX")
 trap 'rm -rf "$test_build"' EXIT
 sanitize="-fsanitize=address,undefined -fno-sanitize-recover=all"
+c++ -O2 -g -std=c++17 -Wall -Wextra -Werror $sanitize \
+  tests/roll_timing.cpp -o "$test_build/roll_timing"
+"$test_build/roll_timing"
 cc -O2 -g -std=c11 -Wall -Wextra -Werror -Wno-unused-function $sanitize \
   -c src/drum_engine.c -o "$test_build/drum_engine.o"
 # Hortator's sources are kept as published: their warnings are not ours to fix. They shift
