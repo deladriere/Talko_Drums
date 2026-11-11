@@ -11,6 +11,64 @@ At startup, the front display shows `0`, the dot, then `2`. The rear LED
 flashes blue once for the dot and green twice for the minor version; the zero
 major version has no red flashes.
 
+## Building
+
+Requirements: PlatformIO Core with the Arduino-Pico core selected in
+`platformio.ini`. PlatformIO installs the embedded toolchain and framework.
+Host checks also need a POSIX shell and C11/C++17 compilers (`cc` and `c++`)
+with AddressSanitizer and UndefinedBehaviorSanitizer support.
+
+Run these commands from this folder:
+
+```sh
+pio run -e pico              # firmware: .pio/build/pico/firmware.uf2
+sh tests/run_host.sh         # host checks with ASan and UBSan
+sh tests/run_host.sh renders # also writes every hit, a groove per kit, and every Hortator preset as WAV
+pio run -e bench             # voice cost benchmark (send '?'); not a release image
+```
+
+To flash a connected Talko and read it, with PlatformIO's Python (it has
+pyserial). Close any Console page holding the port first:
+
+```sh
+~/.platformio/penv/bin/python tools/flash_local.py --serial <USB serial number> --image Talko_Drums-0.2.uf2 --product "Talko 2 Drums 0.2"
+~/.platformio/penv/bin/python tools/status.py --seconds 30
+~/.platformio/penv/bin/python tools/status.py --seconds 150 --every 0 --send '!' --until "TEST done"
+```
+
+`flash_local.py` first saves the complete flash to `rollback/` unless given
+`--no-backup`.
+
+The RP2040 runs at 200 MHz with the core regulator set to 1.15 V by the
+Arduino core. Raspberry Pi documents this operating point in the
+[RP2040 datasheet, section 2.15.3](https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf);
+133 MHz is the limit specified across all process, voltage and temperature
+variations. The audio runs at 44.1 kHz with an
+88.2 kHz PWM carrier on GP1. Core 1 renders the hits and effects in 128-sample
+blocks; core 0 handles the panel and USB. Both drum engines run from RAM
+(`tools/engines_in_ram.py`), which shortened the worst whole-kit blocks by 10 to
+20% over running them from flash.
+
+### Voice costs
+
+`validation/bench-200.txt` holds, from the bench firmware at 200 MHz with the
+engines in RAM: each effect's cost, each kit with all eight hits struck at once,
+each voice's worst 128-sample block alone, and each Hortator trigger.
+`src/hortator_engine.c` budgets each Hortator model by its worst block, and
+`src/drum_engine.c` adds 60 (in 133 MHz microseconds) per Hortator voice for the
+cost of mixing it, measured with the self-test. Hortator's Plaits-style models
+(BOOM, PUNCH, SNAP, CRACK, METAL, HISS) take 0.8 to 2 ms each and SKIN 2.1 ms,
+so no kit uses them. Reverb is the heaviest effect, 334 µs per block.
+
+### Source layout
+
+- `src/main.cpp`: panel inputs, display, USB serial and on-device self-test.
+- `src/audio.cpp`: core 1 rendering, PWM output, timing counters and voice budget.
+- `src/drum_engine.c` and `src/hortator_engine.c`: voice management and engine adapters.
+- `src/effects.cpp`: effects; `src/panel_logic.h`: control mappings and gate settling.
+- `third_party/`: bundled upstream engines, licences and source hashes.
+- `tests/`, `tools/` and `validation/`: host checks, development helpers and hardware logs.
+
 ## Play
 
 Start with bank **0**, **PITCH** and **SPEED** at noon, and **FX** fully
@@ -148,8 +206,11 @@ current kit or FX page. A ringing hit or held ERROR keeps the display awake.
 
 ## USB serial
 
-The port appears as **Talko 2 Drums 0.2**. At 115200 baud it prints the name of
-every hit as it plays, one per line: Felucca's `KICK`, `SNARE`, `CLAP`, `HATCL`,
+Serial-port selectors that support device names show **Talko 2 Drums 0.2**,
+so you can identify the installed firmware and version before connecting.
+
+At 115200 baud, the firmware prints the name of every hit as it plays, one per
+line: Felucca's `KICK`, `SNARE`, `CLAP`, `HATCL`,
 `HATOP`, `TOM`, `CONGA`, `RIM`, `CLAVE`, `BELL` or `CYM` on kits `0` to `5`, and
 the Hortator preset name (`SUBTHUMP`, `FMHAT` and so on) on kits `6` to `F`. When
 hits come faster than the USB link can print, only the latest is printed. Send
@@ -182,47 +243,6 @@ TEST 9 EFM peak_us=2180/1446/2302 sheds=0/0/0 late_blocks=0 underrun_samples=0
 
 Drum hits have no articulation to animate, so this firmware does not stream
 Console lip-sync events.
-
-## Building
-
-PlatformIO, from this folder:
-
-```sh
-pio run -e pico              # firmware: .pio/build/pico/firmware.uf2
-sh tests/run_host.sh         # host checks with ASan and UBSan
-sh tests/run_host.sh renders # also writes every hit, a groove per kit, and every Hortator preset as WAV
-pio run -e bench             # voice cost benchmark (send '?'); not a release image
-```
-
-To flash a connected Talko and read it, with PlatformIO's Python (it has
-pyserial). Close any Console page holding the port first:
-
-```sh
-~/.platformio/penv/bin/python tools/flash_local.py --serial <USB serial number> --image Talko_Drums-0.2.uf2 --product "Talko 2 Drums 0.2"
-~/.platformio/penv/bin/python tools/status.py --seconds 30
-~/.platformio/penv/bin/python tools/status.py --seconds 150 --every 0 --send '!' --until "TEST done"
-```
-
-`flash_local.py` first saves the complete flash to `rollback/` unless given
-`--no-backup`.
-
-The RP2040 runs at 200 MHz, Raspberry Pi's rated maximum; the Arduino core
-raises the regulator to 1.15 V for it. The audio runs at 44.1 kHz with an
-88.2 kHz PWM carrier on GP1. Core 1 renders the hits and effects in 128-sample
-blocks; core 0 handles the panel and USB. Both drum engines run from RAM
-(`tools/engines_in_ram.py`), which shortened the worst whole-kit blocks by 10 to
-20% over running them from flash.
-
-### Voice costs
-
-`validation/bench-200.txt` holds, from the bench firmware at 200 MHz with the
-engines in RAM: each effect's cost, each kit with all eight hits struck at once,
-each voice's worst 128-sample block alone, and each Hortator trigger.
-`src/hortator_engine.c` budgets each Hortator model by its worst block, and
-`src/drum_engine.c` adds 60 (in 133 MHz microseconds) per Hortator voice for the
-cost of mixing it, measured with the self-test. Hortator's Plaits-style models
-(BOOM, PUNCH, SNAP, CRACK, METAL, HISS) take 0.8 to 2 ms each and SKIN 2.1 ms,
-so no kit uses them. Reverb is the heaviest effect, 334 µs per block.
 
 ## Hardware checks
 

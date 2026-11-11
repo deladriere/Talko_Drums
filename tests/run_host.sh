@@ -2,7 +2,7 @@
 # Usage: tests/run_host.sh [folder for WAV renders]
 set -eu
 cd "$(dirname "$0")/.."
-test_build=$(mktemp -d /private/tmp/talko-drums-host.XXXXXX)
+test_build=$(mktemp -d "${TMPDIR:-/tmp}/talko-drums-host.XXXXXX")
 trap 'rm -rf "$test_build"' EXIT
 sanitize="-fsanitize=address,undefined -fno-sanitize-recover=all"
 cc -O2 -g -std=c11 -Wall -Wextra -Werror -Wno-unused-function $sanitize \
