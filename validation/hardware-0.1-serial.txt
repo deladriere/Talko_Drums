@@ -1,0 +1,283 @@
+Talko 2 Drums 0.1
+BANK 0 STD
+SOUND 1 KICK
+EFFECT Reverb page=BANK
+PANEL sound=41 pitch=1474 fx=2317 speed=2690 gate=0 error=0
+MODE one-shot
+ENCODER detents=0 invalid=0
+AUDIO budget_us=2902 peak_us=740 late_blocks=0 underrun_samples=0
+Talko 2 Drums 0.1
+BANK 0 STD
+SOUND 1 KICK
+EFFECT Reverb page=BANK
+PANEL sound=42 pitch=1475 fx=2315 speed=2691 gate=0 error=0
+MODE one-shot
+ENCODER detents=0 invalid=0
+AUDIO budget_us=2902 peak_us=740 late_blocks=0 underrun_samples=0
+Talko 2 Drums 0.1
+BANK 0 STD
+SOUND 1 KICK
+EFFECT Reverb page=BANK
+PANEL sound=38 pitch=1472 fx=2316 speed=2690 gate=0 error=0
+MODE one-shot
+ENCODER detents=0 invalid=0
+AUDIO budget_us=2902 peak_us=740 late_blocks=0 underrun_samples=0
+Talko 2 Drums 0.1
+BANK 0 STD
+SOUND 1 KICK
+EFFECT Reverb page=BANK
+PANEL sound=37 pitch=1472 fx=2317 speed=2689 gate=0 error=0
+MODE one-shot
+ENCODER detents=0 invalid=0
+AUDIO budget_us=2902 peak_us=740 late_blocks=0 underrun_samples=0
+Talko 2 Drums 0.1
+BANK 0 STD
+SOUND 1 KICK
+EFFECT Reverb page=BANK
+PANEL sound=39 pitch=1471 fx=2316 speed=2691 gate=0 error=0
+MODE one-shot
+ENCODER detents=0 invalid=0
+AUDIO budget_us=2902 peak_us=740 late_blocks=0 underrun_samples=0
+Talko 2 Drums 0.1
+BANK 0 STD
+SOUND 1 KICK
+EFFECT Reverb page=BANK
+PANEL sound=40 pitch=1472 fx=2316 speed=2688 gate=0 error=0
+MODE one-shot
+ENCODER detents=0 invalid=0
+AUDIO budget_us=2902 peak_us=740 late_blocks=0 underrun_samples=0
+Talko 2 Drums 0.1
+BANK 0 STD
+SOUND 1 KICK
+EFFECT Reverb page=BANK
+PANEL sound=48 pitch=1475 fx=2315 speed=2689 gate=0 error=0
+MODE one-shot
+ENCODER detents=0 invalid=0
+AUDIO budget_us=2902 peak_us=740 late_blocks=0 underrun_samples=0
+Talko 2 Drums 0.1
+BANK 0 STD
+SOUND 1 KICK
+EFFECT Reverb page=BANK
+PANEL sound=40 pitch=1474 fx=2317 speed=2690 gate=0 error=0
+MODE one-shot
+ENCODER detents=0 invalid=0
+AUDIO budget_us=2902 peak_us=740 late_blocks=0 underrun_samples=0
+Talko 2 Drums 0.1
+BANK 0 STD
+SOUND 1 KICK
+EFFECT Reverb page=BANK
+PANEL sound=40 pitch=1476 fx=2319 speed=2690 gate=0 error=0
+MODE one-shot
+ENCODER detents=0 invalid=0
+AUDIO budget_us=2902 peak_us=740 late_blocks=0 underrun_samples=0
+Talko 2 Drums 0.1
+BANK 0 STD
+SOUND 1 KICK
+EFFECT Reverb page=BANK
+PANEL sound=40 pitch=1472 fx=2318 speed=2687 gate=0 error=0
+MODE one-shot
+ENCODER detents=0 invalid=0
+AUDIO budget_us=2902 peak_us=740 late_blocks=0 underrun_samples=0
+KICK
+KICK
+KICK
+KICK
+KICK
+KICK
+KICK
+Talko 2 Drums 0.1
+BANK 0 STD
+SOUND 1 KICK
+EFFECT Reverb page=BANK
+PANEL sound=41 pitch=1474 fx=2318 speed=2689 gate=0 error=0
+MODE one-shot
+ENCODER detents=0 invalid=0
+AUDIO budget_us=2902 peak_us=1496 late_blocks=0 underrun_samples=0
+KICK
+KICK
+KICK
+KICK
+KICK
+KICK
+KICK
+KICK
+KICK
+Talko 2 Drums 0.1
+BANK 9 H+CYM
+SOUND 1 KICK
+EFFECT Reverb page=BANK
+PANEL sound=40 pitch=1475 fx=2317 speed=2688 gate=0 error=0
+MODE one-shot
+ENCODER detents=9 invalid=0
+AUDIO budget_us=2902 peak_us=1910 late_blocks=0 underrun_samples=0
+KICK
+KICK
+KICK
+KICK
+KICK
+KICK
+KICK
+BELL
+BELL
+BELL
+BELL
+CONGA
+HATCL
+Talko 2 Drums 0.1
+BANK 8 PERC
+SOUND 4 HATCL
+EFFECT Reverb page=BANK
+PANEL sound=1931 pitch=1474 fx=2316 speed=2686 gate=1 error=0
+MODE one-shot
+ENCODER detents=13 invalid=0
+AUDIO budget_us=2902 peak_us=1910 late_blocks=0 underrun_samples=0
+HATCL
+KICK
+KICK
+KICK
+KICK
+KICK
+KICK
+KICK
+KICK
+KICK
+KICK
+KICK
+KICK
+Talko 2 Drums 0.1
+BANK 1 80
+SOUND 1 KICK
+EFFECT Reverb page=BANK
+PANEL sound=23 pitch=1473 fx=2316 speed=2689 gate=0 error=0
+MODE one-shot
+ENCODER detents=20 invalid=0
+AUDIO budget_us=2902 peak_us=2142 late_blocks=0 underrun_samples=0
+KICK
+KICK
+KICK
+KICK
+KICK
+KICK
+KICK
+Talko 2 Drums 0.1
+BANK 1 80
+SOUND 1 KICK
+EFFECT Crush page=FX
+PANEL sound=25 pitch=1475 fx=4095 speed=2690 gate=1 error=0
+MODE one-shot
+ENCODER detents=22 invalid=0
+AUDIO budget_us=2902 peak_us=2142 late_blocks=0 underrun_samples=0
+KICK
+KICK
+KICK
+KICK
+KICK
+KICK
+KICK
+KICK
+KICK
+KICK
+Talko 2 Drums 0.1
+BANK 1 80
+SOUND 1 KICK
+EFFECT Ring mod page=FX
+PANEL sound=22 pitch=1476 fx=21 speed=2691 gate=0 error=0
+MODE one-shot
+ENCODER detents=23 invalid=0
+AUDIO budget_us=2902 peak_us=2142 late_blocks=0 underrun_samples=0
+SNARE
+SNARE
+KICK
+SNARE
+RIM
+BELL
+RIM
+CLAP
+HATCL
+BELL
+RIM
+RIM
+HATCL
+HATOP
+RIM
+BELL
+BELL
+HATCL
+CLAP
+CLAP
+SNARE
+SNARE
+Talko 2 Drums 0.1
+BANK 1 80
+SOUND 4 HATCL
+EFFECT Ring mod page=FX
+PANEL sound=1581 pitch=1474 fx=22 speed=2689 gate=0 error=0
+MODE one-shot
+ENCODER detents=23 invalid=0
+AUDIO budget_us=2902 peak_us=2142 late_blocks=0 underrun_samples=0
+SNARE
+TOM
+HATCL
+SNARE
+TOM
+TOM
+HATCL
+SNARE
+TOM
+RIM
+RIM
+TOM
+SNARE
+TOM
+BELL
+HATCL
+KICK
+SNARE
+HATCL
+BELL
+BELL
+RIM
+KICK
+TOM
+BELL
+BELL
+RIM
+HATOP
+RIM
+BELL
+Talko 2 Drums 0.1
+BANK 1 80
+SOUND 8 BELL
+EFFECT Ring mod page=FX
+PANEL sound=4095 pitch=1474 fx=23 speed=2690 gate=0 error=0
+MODE one-shot
+ENCODER detents=23 invalid=0
+AUDIO budget_us=2902 peak_us=2142 late_blocks=0 underrun_samples=0
+TOM
+HATCL
+BELL
+BELL
+RIM
+HATOP
+SNARE
+KICK
+KICK
+SNARE
+HATOP
+BELL
+BELL
+BELL
+HATCL
+RIM
+TOM
+SNARE
+HATOP
+BELL
+BELL
+BELL
+HATOP
+RIM
+HATCL
+SNARE
+HATOP
+RIM

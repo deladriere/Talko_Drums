@@ -141,12 +141,35 @@ sh tests/run_host.sh         # host checks with ASan and UBSan
 sh tests/run_host.sh renders # also writes every hit and a groove per kit as WAV
 ```
 
+To flash a connected Talko and read it, with PlatformIO's Python (it has
+pyserial). Close any Console page holding the port first:
+
+```sh
+~/.platformio/penv/bin/python tools/flash_local.py --serial <USB serial number>
+~/.platformio/penv/bin/python tools/status.py --seconds 30
+```
+
+`flash_local.py` first saves the complete flash to `rollback/` unless given
+`--no-backup`.
+
 The audio runs at 44.1 kHz with a 88.2 kHz PWM carrier on GP1. Core 1 renders
 the hits and effects in 128-sample blocks; core 0 handles the panel and USB.
 
-## Hardware checks still to do
+## Hardware checks
 
-Version 0.1 is built and checked on the host only. On a Talko, check:
+On 11 November 2026, 0.1 was flashed with `tools/flash_local.py` and played
+for 90 seconds while `tools/status.py` logged the serial output
+(`validation/hardware-0.1-serial.txt`):
+
+- USB showed `Talko 2 Drums 0.1`. The status report answered every `?`.
+- 139 hit labels came through, covering all eight SOUND positions, with
+  banks 0, 1, 8 and 9 seen in the reports. Encoder: 23 detents, 0 invalid. The FX page switched between
+  Reverb, Crush and Ring mod.
+- Audio: `peak_us` 740 at rest with Reverb, 2,142 at the busiest moment, out of a
+  2,902 µs budget. `late_blocks` and `underrun_samples` stayed 0.
+
+ERROR was not held during that log, so the roll's load is still unmeasured.
+Still to check:
 
 - The first encoder click after boot, fast turns both ways, and a one-click
   reversal at banks 0 and 9.
